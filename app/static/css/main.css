@@ -1,0 +1,86 @@
+* {
+	box-sizing: border-box;
+}
+
+@keyframes pulseAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+
+.pulse {
+    opacity: 1;  
+    animation: pulseAnimation 2s infinite;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.loader {
+    width: 100vw;
+    height: 100vh;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    font-style: italic;
+    font-size: 36px;
+}
+
+#loaderMessage {
+    text-align: center;
+}
+
+.loader img {
+    width: 400px;
+}
+
+.swiper-container {
+    max-width: 800px;
+    max-height: 50vh;
+    position: relative;
+}
+
+.swiper-container.hidden {
+    display: none
+}
+
+.swiper-container .swiper-slide {
+    width: 75vw;
+    height: 75vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: 75% 5%;
+    background-size: 250px;
+}
+
+.swiper-container .swiper-slide:nth-child(odd) {
+    background-image: url("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png");
+}
+
+.swiper-container .swiper-slide:nth-child(even) {
+    background-image: url("https://github.githubassets.com/images/modules/logos_page/Octocat.png");
+}
+
+.swiper-container .swiper-slide .content {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 2em;
+}
+
+.content p {
+    font-size: 36px;
+}
+
+span.highlights {
+    padding: 0 0.5em;
+    color: #522;
+    font-weight: 700;
+}

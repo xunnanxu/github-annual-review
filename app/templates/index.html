@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ user }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/css/swiper.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}?q={{ time }}">
+</head>
+<body>
+    <script src="https://unpkg.com/@ungap/url-search-params@0.1.2/min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/swiper.animate1.0.3.min.js') }}"></script>
+
+    <div id="loader" class="loader pulse">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png">
+        <span id="loaderMessage">Crunching data just for you...<br>(Github APIs may take a while to respond)</span>
+    </div>
+    <div class="swiper-container hidden">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="content">
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                    >
+                        Hi,<span class="userDisplayName highlights"></span>
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="0.5s"
+                    >
+                        这是你开始使用Github
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1s"
+                    >
+                        后的第<span id="daysInGithub" class="highlights">161</span>天
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1.5s"
+                    >
+                        距离你创建第一个repo<span id="firstRepoName" class="highlights"></span>
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="2s"
+                    >
+                        已经过去了<span id="daysSinceFirstRepo" class="highlights">161</span>天
+                    </p>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="content">
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                    >
+                        在过去的一年中
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="0.5s"
+                    >
+                        <span id="favoriteRepo" class="highlights"></span>
+                        是你最喜欢的repo
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1.5s"
+                    >
+                        你一共为它贡献了
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1.5s"
+                    >
+                        <span id="commits_fav_repo" class="highlights"></span>个commits
+                        和<span id="issues_fav_repo" class="highlights"></span>个issues
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="2s"
+                    >
+                        而在你所属的repo之外
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="2.5s"
+                    >
+                        你最常光顾的则是<span id="favorite3PRepo" class="highlights"></span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="content">
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                    >
+                        你的repo之中，<span id="mostLikedRepo" class="highlights"></span>
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="0.5s"
+                    >
+                        是最受欢迎的
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1s"
+                    >
+                        到目前收到了<span id="likedRepoStars" class="highlights"></span>个stars
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1.5s"
+                    >
+                        和<span id="likedRepoForks" class="highlights"></span>个forks
+                    </p>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="content">
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                    >
+                        你全年一共提交了
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="0.5s"
+                    >
+                        <span id="totalCommits" class="highlights"></span>个commits
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1s"
+                    >
+                        共计<span id="linesChanged" class="highlights"></span>行改动
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1.5s"
+                    >
+                        提交了<span id="totalIssues" class="highlights"></span>个issues
+                    </p>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="content">
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="0.5s"
+                    >
+                        2018年，<span id="favLanguage" class="highlights"></span>
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1s"
+                    >
+                        是你最喜欢的语言
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1.5s"
+                    >
+                        这个结果或许情理之中
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="2s"
+                    >
+                        或许意料之外
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="2.5s"
+                    >
+                        无论你是否喜欢
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="3s"
+                    >
+                        你使用/关注它的几率是最高的
+                    </p>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="content">
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                    >
+                        2019年已经到来
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="0.5s"
+                    >
+                        请务必继续努力
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1s"
+                    >
+                        为开源社区做出属于你的贡献
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="1.5s"
+                    >
+                        加油<span class="userDisplayName highlights"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}?q={{ time }}"></script>
+</body>
+</html>
