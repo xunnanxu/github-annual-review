@@ -1,23 +1,5 @@
 (function () {
-    function getCookie(name) {
-        var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-        return v ? v[2] : null;
-    }
-
     var apiUrl = '/review'
-    var accessToken = getCookie('gh_access_token');
-    if (!accessToken) {
-        var urlParams = new URLSearchParams(window.location.search.substring(1));
-        var code = urlParams.get('code');
-        if (!code) {
-            $('#loaderMessage').html('Access token not found.<br>Redirecting to Github to authorize...')
-            window.setTimeout(function () {
-                window.location.href = '/login';
-            }, 1000);
-            return;
-        }
-        apiUrl += '?code=' + code
-    }
 
     $(document).ready(function () {
         function fillBlanks (data) {
