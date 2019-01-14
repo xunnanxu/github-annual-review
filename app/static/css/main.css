@@ -43,7 +43,7 @@ body {
 
 .swiper-container {
     max-width: 800px;
-    max-height: 50vh;
+    max-height: 80vh;
     position: relative;
 }
 
@@ -58,7 +58,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     background-repeat: no-repeat;
-    background-position: 75% 5%;
+    background-position: 400px 20px;
     background-size: 250px;
 }
 
