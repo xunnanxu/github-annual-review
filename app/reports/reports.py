@@ -116,12 +116,20 @@ def get_fav_repo(all_repo_names, owned_repos, commits_by_repo, num_issues_by_rep
     repo_scores = sorted(scores_by_repo.items(), key=lambda x: x[1], reverse=True)
     fav = None
     fav_not_owned = None
+
+    def gen_output(repo):
+        return {
+            'repo': repo,
+            'commits': commits_by_repo[repo]['count'] if repo in commits_by_repo else 0,
+            'issues': num_issues_by_repo.get(repo, 0)
+        }
+
     for repo, _ in repo_scores:
         if not fav:
-            fav = repo
+            fav = gen_output(repo)
         if repo not in owned_repos:
             if not fav_not_owned:
-                fav_not_owned = repo
+                fav_not_owned = gen_output(repo)
         if fav and fav_not_owned:
             break
     return fav, fav_not_owned

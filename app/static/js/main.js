@@ -25,8 +25,12 @@
             $('#firstRepoName').text(data.first_repo_name);
             $('#daysInGithub').text(data.user.days_since);
             $('#daysSinceFirstRepo').text(data.user.days_since_first_repo);
-            $('#favoriteRepo').text(data.favorite_repo);
-            $('#favorite3PRepo').text(data.favorite_3p_repo);
+            $('#favoriteRepo').text(data.favorite_repo.repo);
+            $('#commitsFavRepo').text(data.favorite_repo.commits);
+            $('#issuesFavRepo').text(data.favorite_repo.issues);
+            $('#favorite3PRepo').text(data.favorite_3p_repo.repo);
+            $('#commitsFav3PRepo').text(data.favorite_3p_repo.commits);
+            $('#issuesFav3PRepo').text(data.favorite_3p_repo.issues);
             $('#mostLikedRepo').text(data.most_liked_repo.repo);
             $('#likedRepoStars').text(data.most_liked_repo.stars);
             $('#likedRepoForks').text(data.most_liked_repo.forks);
