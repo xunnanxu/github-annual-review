@@ -19,19 +19,33 @@ body {
     padding: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
     font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
 }
 
 .loader {
     width: 100vw;
     height: 100vh;
     font-size: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-flow: column nowrap;
     font-style: italic;
-    font-size: 36px;
+}
+
+.error {
+    width: 50vw;
+    height: 50vh;
+    color: #a33;
+}
+
+.hidden {
+    display: none;
 }
 
 #loaderMessage {

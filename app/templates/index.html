@@ -11,10 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/swiper.animate1.0.3.min.js') }}"></script>
 
-    <div id="loader" class="loader pulse">
+    <div id="loader" class="loader notification pulse">
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png">
         <span id="loaderMessage">Crunching data just for you...<br>(Github APIs may take a while to respond)</span>
     </div>
+    <div id="error" class="error notification hidden"></div>
     <div class="swiper-container hidden">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -93,8 +94,9 @@
                         swiper-animate-duration="0.5s"
                         swiper-animate-delay="1.5s"
                     >
-                        <span id="commitsFavRepo" class="highlights"></span>个 commits
-                        和<span id="issuesFavRepo" class="highlights"></span>个 issues
+                        <span id="showCommitsFavRepo"><span id="commitsFavRepo" class="highlights"></span>个 commits</span>
+                        <span id="showIssuesFavRepo"><span id="issuesFavRepo" class="highlights"></span>个 issues</span>
+                        <span id="showPRsFavRepo"><span id="prsFavRepo" class="highlights"></span>个 PRs</span>
                     </p>
                     <p
                         class="ani"
@@ -118,8 +120,17 @@
                         swiper-animate-duration="0.5s"
                         swiper-animate-delay="3s"
                     >
-                        一共提交了<span id="commitsFav3PRepo" class="highlights"></span>个 commits
-                        和<span id="issuesFav3PRepo" class="highlights"></span>个 issues
+                        一共提交了
+                    </p>
+                    <p
+                        class="ani"
+                        swiper-animate-effect="fadeIn"
+                        swiper-animate-duration="0.5s"
+                        swiper-animate-delay="3.5s"
+                    >
+                        <span id="showCommitsFav3PRepo"><span id="commitsFav3PRepo" class="highlights"></span>个 commits</span>
+                        <span id="showIssuesFav3PRepo"><span id="issuesFav3PRepo" class="highlights"></span>个 issues</span>
+                        <span id="showPRsFav3PRepo"><span id="prsFav3PRepo" class="highlights"></span>个 PRs</span>
                     </p>
                 </div>
             </div>

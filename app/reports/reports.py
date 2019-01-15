@@ -64,23 +64,22 @@ def build_report(client):
         num_lines_weight = c.total / total_lines_in_commits
         for lang, lang_weight_in_repo in language_weights.items():
             language_sores[lang] += num_lines_weight * lang_weight_in_repo * COMMIT_WEIGHT
-    num_issues_by_repo = defaultdict(int)
+    issues_by_repo = defaultdict(list)
     total_issues = 0
     for issue in issues:
-        num_issues_by_repo[issue.repo] += 1
+        issues_by_repo[issue.repo].append(issue)
         total_issues += 1
-    for repo, num_issues in num_issues_by_repo.items():
+    for repo, issues in issues_by_repo.items():
         language_weights = language_weight_by_repo[c.repo] or {}
         for lang, lang_weight_in_repo in language_weights.items():
-            language_sores[lang] += num_issues / len(issues) * lang_weight_in_repo * ISSUE_WEIGHT
+            language_sores[lang] += len(issues) / len(issues) * lang_weight_in_repo * ISSUE_WEIGHT
 
     for starred_repo in starred_repos:
         langs = starred_repo.get_languages()
         total_bytes = sum(langs.values())
         for lang, num_bytes in langs.items():
             language_sores[lang] += 1 / starred_repos.totalCount * num_bytes / total_bytes * STAR_WEIGHT
-
-    response['issues'] = num_issues_by_repo
+    response['issues'] = { k: [asdict(vv) for vv in v] for k, v in issues_by_repo.items() }
     response['total_issues'] = total_issues
     response['total_commits'] = len(commits)
     response['total_lines_committed'] = total_lines_committed
@@ -91,7 +90,7 @@ def build_report(client):
     )
     response['most_liked_repo'] = asdict(owned_repos[0]) if owned_repos else None
 
-    fav, fav_not_owned = get_fav_repo(contributed_repo_full_names, owned_repo_names, commits_by_repo, num_issues_by_repo)
+    fav, fav_not_owned = get_fav_repo(contributed_repo_full_names, owned_repo_names, commits_by_repo, issues_by_repo)
     response['favorite_repo'] = fav
     response['favorite_3p_repo'] = fav_not_owned
 
@@ -106,22 +105,24 @@ def build_report(client):
         user_dict['days_since_first_repo'] = (date(2019, 1, 1) - first_repo_created_at.date()).days
     return response
 
-def get_fav_repo(all_repo_names, owned_repos, commits_by_repo, num_issues_by_repo):
+def get_fav_repo(all_repo_names, owned_repos, commits_by_repo, issues_by_repo):
     scores_by_repo = defaultdict(float)
     for repo in all_repo_names:
         if repo in commits_by_repo:
             scores_by_repo[repo] += commits_by_repo[repo]['count']
-        if repo in num_issues_by_repo:
-            scores_by_repo[repo] += num_issues_by_repo[repo] * 0.5
+        if repo in issues_by_repo:
+            scores_by_repo[repo] += len(issues_by_repo[repo]) * 0.5
     repo_scores = sorted(scores_by_repo.items(), key=lambda x: x[1], reverse=True)
     fav = None
     fav_not_owned = None
 
     def gen_output(repo):
+        issues = issues_by_repo.get(repo, [])
         return {
             'repo': repo,
             'commits': commits_by_repo[repo]['count'] if repo in commits_by_repo else 0,
-            'issues': num_issues_by_repo.get(repo, 0)
+            'issues': len([entity.type == 'Issue' for entity in issues]),
+            'prs': len([entity.type == 'PR' for entity in issues]),
         }
 
     for repo, _ in repo_scores:

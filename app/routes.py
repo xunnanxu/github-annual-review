@@ -37,3 +37,10 @@ def review():
     client = github.get_gh_client(access_token)
     report = build_report(client)
     return flask.jsonify(report)
+
+@app.errorhandler(Exception)
+def handle_error(e):
+    return flask.jsonify({
+            'code': e.code,
+            'message': str(e),
+    }), e.code

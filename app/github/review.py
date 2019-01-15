@@ -26,6 +26,7 @@ def get_commits(client, username) -> List[Commit]:
                 url=c.commit.html_url,
                 message=c.commit.message,
                 repo=owner + '/' + repo_name,
+                type='Commit',
                 lines_added=c.stats.additions,
                 lines_deleted=c.stats.deletions
         ))
@@ -48,7 +49,8 @@ def get_issues(client, username) -> List[Entity]:
         issue_response.append(Entity(
                 url=issue.html_url,
                 message=issue.title,
-                repo=owner + '/' + repo_name
+                repo=owner + '/' + repo_name,
+                type='PR' if '/pull/' in issue.html_url else 'Issue'
         ))
 
     return issue_response

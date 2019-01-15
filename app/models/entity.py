@@ -5,3 +5,4 @@ class Entity:
     message: str
     url: str
     repo: str
+    type: str
