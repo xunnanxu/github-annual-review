@@ -121,8 +121,8 @@ def get_fav_repo(all_repo_names, owned_repos, commits_by_repo, issues_by_repo):
         return {
             'repo': repo,
             'commits': commits_by_repo[repo]['count'] if repo in commits_by_repo else 0,
-            'issues': len([entity.type == 'Issue' for entity in issues]),
-            'prs': len([entity.type == 'PR' for entity in issues]),
+            'issues': sum(1 for entity in issues if entity.type == 'Issue'),
+            'prs': sum(1 for entity in issues if entity.type == 'PR'),
         }
 
     for repo, _ in repo_scores:

@@ -40,7 +40,13 @@ def review():
 
 @app.errorhandler(Exception)
 def handle_error(e):
-    return flask.jsonify({
-            'code': e.code,
-            'message': str(e),
-    }), e.code
+    try:
+        return flask.jsonify({
+                'code': e.code,
+                'message': str(e),
+        }), e.code
+    except:
+        return flask.jsonify({
+                'code': 500,
+                'message': str(e),
+        }), 500
