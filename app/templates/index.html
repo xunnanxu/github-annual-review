@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide" id="favRepoPage">
                 <div class="content">
                     <p
                         class="ani"
@@ -71,71 +71,85 @@
                     >
                         在过去的一年中
                     </p>
+                    <div id="favRepoSection">
+                        <p
+                            class="ani"
+                            swiper-animate-effect="fadeIn"
+                            swiper-animate-duration="0.5s"
+                            swiper-animate-delay="0.5s"
+                        >
+                            <span id="favoriteRepo" class="highlights"></span>
+                            是你最喜欢的repo
+                        </p>
+                        <p
+                            class="ani"
+                            swiper-animate-effect="fadeIn"
+                            swiper-animate-duration="0.5s"
+                            swiper-animate-delay="1s"
+                        >
+                            你一共为它贡献了
+                        </p>
+                        <p
+                            class="ani"
+                            swiper-animate-effect="fadeIn"
+                            swiper-animate-duration="0.5s"
+                            swiper-animate-delay="1.5s"
+                        >
+                            <span id="showCommitsFavRepo"><span id="commitsFavRepo" class="highlights"></span>个 commits</span>
+                            <span id="showIssuesFavRepo"><span id="issuesFavRepo" class="highlights"></span>个 issues</span>
+                            <span id="showPRsFavRepo"><span id="prsFavRepo" class="highlights"></span>个 PRs</span>
+                        </p>
+                    </div>
+                    
+                    <div id="fav3PRepoSection">
+                        <p
+                            class="ani"
+                            swiper-animate-effect="fadeIn"
+                            swiper-animate-duration="0.5s"
+                            swiper-animate-delay="2s"
+                        >
+                            而在你所属的repo之外
+                        </p>
+                        <p
+                            class="ani"
+                            swiper-animate-effect="fadeIn"
+                            swiper-animate-duration="0.5s"
+                            swiper-animate-delay="2.5s"
+                        >
+                            你最常光顾的则是<span id="favorite3PRepo" class="highlights"></span>
+                        </p>
+                        <p
+                            class="ani"
+                            swiper-animate-effect="fadeIn"
+                            swiper-animate-duration="0.5s"
+                            swiper-animate-delay="3s"
+                        >
+                            一共提交了
+                        </p>
+                        <p
+                            class="ani"
+                            swiper-animate-effect="fadeIn"
+                            swiper-animate-duration="0.5s"
+                            swiper-animate-delay="3.5s"
+                        >
+                            <span id="showCommitsFav3PRepo"><span id="commitsFav3PRepo" class="highlights"></span>个 commits</span>
+                            <span id="showIssuesFav3PRepo"><span id="issuesFav3PRepo" class="highlights"></span>个 issues</span>
+                            <span id="showPRsFav3PRepo"><span id="prsFav3PRepo" class="highlights"></span>个 PRs</span>
+                        </p>
+                    </div>
+
                     <p
-                        class="ani"
+                        id="noFavRepo"
+                        class="ani hidden"
                         swiper-animate-effect="fadeIn"
                         swiper-animate-duration="0.5s"
-                        swiper-animate-delay="0.5s"
-                    >
-                        <span id="favoriteRepo" class="highlights"></span>
-                        是你最喜欢的repo
-                    </p>
-                    <p
-                        class="ani"
-                        swiper-animate-effect="fadeIn"
-                        swiper-animate-duration="0.5s"
-                        swiper-animate-delay="1s"
-                    >
-                        你一共为它贡献了
-                    </p>
-                    <p
-                        class="ani"
-                        swiper-animate-effect="fadeIn"
-                        swiper-animate-duration="0.5s"
-                        swiper-animate-delay="1.5s"
-                    >
-                        <span id="showCommitsFavRepo"><span id="commitsFavRepo" class="highlights"></span>个 commits</span>
-                        <span id="showIssuesFavRepo"><span id="issuesFavRepo" class="highlights"></span>个 issues</span>
-                        <span id="showPRsFavRepo"><span id="prsFavRepo" class="highlights"></span>个 PRs</span>
-                    </p>
-                    <p
-                        class="ani"
-                        swiper-animate-effect="fadeIn"
-                        swiper-animate-duration="0.5s"
-                        swiper-animate-delay="2s"
-                    >
-                        而在你所属的repo之外
-                    </p>
-                    <p
-                        class="ani"
-                        swiper-animate-effect="fadeIn"
-                        swiper-animate-duration="0.5s"
-                        swiper-animate-delay="2.5s"
-                    >
-                        你最常光顾的则是<span id="favorite3PRepo" class="highlights"></span>
-                    </p>
-                    <p
-                        class="ani"
-                        swiper-animate-effect="fadeIn"
-                        swiper-animate-duration="0.5s"
-                        swiper-animate-delay="3s"
-                    >
-                        一共提交了
-                    </p>
-                    <p
-                        class="ani"
-                        swiper-animate-effect="fadeIn"
-                        swiper-animate-duration="0.5s"
-                        swiper-animate-delay="3.5s"
-                    >
-                        <span id="showCommitsFav3PRepo"><span id="commitsFav3PRepo" class="highlights"></span>个 commits</span>
-                        <span id="showIssuesFav3PRepo"><span id="issuesFav3PRepo" class="highlights"></span>个 issues</span>
-                        <span id="showPRsFav3PRepo"><span id="prsFav3PRepo" class="highlights"></span>个 PRs</span>
+                        swiper-animate-delay="0.5s">
+                        你似乎没有自己钟爱的repo，还有很多有待发掘
                     </p>
                 </div>
             </div>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide" id="mostLikedRepoPage">
                 <div class="content">
                     <p
                         class="ani"
@@ -207,7 +221,7 @@
                 </div>
             </div>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide" id="favLanguagePage">
                 <div class="content">
                     <p
                         class="ani"
